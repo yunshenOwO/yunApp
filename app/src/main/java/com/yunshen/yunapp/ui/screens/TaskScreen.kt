@@ -15,7 +15,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -50,7 +50,7 @@ fun TaskScreen() {
             //头像部分
             item {
                 Row (verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = 24.dp)){
-                    Image(painter = painterResource(id = R.drawable.ysbzc), contentDescription =null,
+                    Image(painter = painterResource(id = R.drawable.yunshen), contentDescription =null,
                         modifier = Modifier
                             .size(62.dp)
                             .clip(CircleShape),
@@ -90,7 +90,7 @@ fun TaskScreen() {
                                 color = Color(0xff333333),
                                 fontSize = 16.sp,
                                 modifier = Modifier.weight(1f))
-                            Icon(imageVector = Icons.Default.KeyboardArrowRight,
+                            Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                                 contentDescription = null,
                                 modifier = Modifier.size(13.dp),
                                 tint = Color.Gray

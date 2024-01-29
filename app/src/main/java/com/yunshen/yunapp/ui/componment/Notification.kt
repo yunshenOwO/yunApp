@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.VerticalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.yunshen.yunapp.viewmodel.MainViewModel
@@ -26,7 +25,6 @@ import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Notification(vm:MainViewModel) {
 
