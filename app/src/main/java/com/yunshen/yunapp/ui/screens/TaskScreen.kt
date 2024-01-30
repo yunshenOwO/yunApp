@@ -50,7 +50,7 @@ fun TaskScreen() {
             //头像部分
             item {
                 Row (verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = 24.dp)){
-                    Image(painter = painterResource(id = R.drawable.ysbzc), contentDescription =null,
+                    Image(painter = painterResource(id = R.drawable.yunshen), contentDescription =null,
                         modifier = Modifier
                             .size(62.dp)
                             .clip(CircleShape),

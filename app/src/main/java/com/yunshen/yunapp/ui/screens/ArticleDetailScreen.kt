@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,8 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yunshen.yunapp.ui.componment.WebViewItem
-import com.yunshen.yunapp.ui.componment.rememberWebViewState
+import com.yunshen.module.webview.rememberWebViewState
 import com.yunshen.yunapp.viewmodel.ArticleViewModel
 import kotlinx.coroutines.launch
 
@@ -49,7 +48,7 @@ fun ArticleDetailScreen(arTest : ArticleViewModel = viewModel(),onBack: () -> Un
         TopAppBar(title = {
             Text(text = "文章详情页", fontSize = 16.sp, color = Color.Black, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
         }, navigationIcon = {
-            Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null,
+            Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null,
                 modifier = Modifier.clickable {
                     onBack()
                 }) },
@@ -83,7 +82,7 @@ fun ArticleDetailScreen(arTest : ArticleViewModel = viewModel(),onBack: () -> Un
                 }
     }}, sheetPeekHeight = 0.dp) {
         Box(modifier = Modifier.padding(it)){
-            WebViewItem(rememberWebViewState)
+            com.yunshen.module.webview.WebViewItem(rememberWebViewState)
         }
     }
 }

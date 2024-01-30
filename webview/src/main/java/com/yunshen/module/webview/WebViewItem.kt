@@ -1,4 +1,4 @@
-package com.yunshen.yunapp.ui.componment
+package com.yunshen.module.webview
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
@@ -68,15 +68,15 @@ fun WebViewItem(state: WebViewState){
     }
 }
 sealed class WebContent{
-    data class Url(val url:String):WebContent()
-    data class Data(val data:String, val baseUrl:String? =null):WebContent()
+    data class Url(val url:String): WebContent()
+    data class Data(val data:String, val baseUrl:String? =null): WebContent()
 }
 
-class WebViewState(webContent:WebContent){
-    var content by mutableStateOf(webContent)
-    var pageTitle :String? by mutableStateOf(null)
+class WebViewState(webContent: WebContent){
+    internal var content by mutableStateOf(webContent)
+    internal var pageTitle :String? by mutableStateOf(null) //让外部访问不了这个属性
     //共享流数据类型
-    private class Event(val type:EventType, val args:String, val callback: ((String) -> Unit)?)
+    private class Event(val type: EventType, val args:String, val callback: ((String) -> Unit)?)
 
     enum class EventType{
         EVALUATE_JAVASCRIPT//执行js方法

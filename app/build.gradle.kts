@@ -51,6 +51,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":webview"))
     val lifecycleVersion = "2.7.0"
     val accountVersion = "0.34.0"
     val navVersion = "2.7.6"

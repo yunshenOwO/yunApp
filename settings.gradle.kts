@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "yunApp"
 include(":app")
+include(":webview")
