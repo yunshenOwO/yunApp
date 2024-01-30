@@ -15,7 +15,7 @@ import com.yunshen.yunapp.ui.screens.VideoDetailScreen
  */
 @Composable
 fun NavHostApp(){
-    val navController = rememberNavController()
+    val navController = rememberNavController() //控制器
     //路由入口
     NavHost(navController = navController, startDestination = Destination.HomeFrame.route, builder = {
         composable(route = Destination.HomeFrame.route, enterTransition ={

@@ -78,7 +78,9 @@ fun TaskScreen() {
                         .padding(8.dp)) {
                     Icon(painter = painterResource(id = it.icon),
                         contentDescription = null,
-                        modifier = Modifier.size(17.dp))
+                        modifier = Modifier.size(17.dp),
+                        tint = Color(0xFF9F57E6)
+                    )
                     Column(modifier = Modifier
                         .weight(1f)
                         .padding(horizontal = 8.dp)) {
