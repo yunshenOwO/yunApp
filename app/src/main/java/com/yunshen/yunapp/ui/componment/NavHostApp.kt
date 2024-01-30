@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.yunshen.yunapp.ui.navigation.Destination
 import com.yunshen.yunapp.ui.screens.ArticleDetailScreen
 import com.yunshen.yunapp.ui.screens.MainFrame
+import com.yunshen.yunapp.ui.screens.VideoDetailScreen
 
 /**
  * 导航控制器
@@ -24,6 +25,8 @@ fun NavHostApp(){
         }){
             MainFrame(onNavigateToArticle = {
                 navController.navigate(Destination.ArticleDetail.route)
+            }, onNavigateToVideo = {
+                navController.navigate(Destination.VideoDetail.route)
             })
         }
         composable(Destination.ArticleDetail.route, enterTransition ={
@@ -32,6 +35,16 @@ fun NavHostApp(){
             slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
         }){
             ArticleDetailScreen(onBack = {
+                navController.popBackStack()
+            })
+        }
+
+        composable(Destination.VideoDetail.route, enterTransition ={
+            slideIntoContainer(towards = AnimatedContentTransitionScope.SlideDirection.Left)
+        }, exitTransition = {
+            slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+        }){
+            VideoDetailScreen(onBack = {
                 navController.popBackStack()
             })
         }

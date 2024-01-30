@@ -22,7 +22,7 @@ import coil.compose.AsyncImage
 import com.yunshen.yunapp.model.entity.VideoEntity
 
 @Composable
-fun VideoItem(videoItem:VideoEntity) {
+fun VideoItem(modifier: Modifier, videoItem:VideoEntity) {
     val constantSet = ConstraintSet{
         val title = createRefFor("title")
         val cover = createRefFor("cover")
@@ -55,7 +55,7 @@ fun VideoItem(videoItem:VideoEntity) {
             bottom.linkTo(parent.bottom, margin = (-16).dp)
         }
     }
-    ConstraintLayout(constantSet, modifier = Modifier.fillMaxWidth()
+    ConstraintLayout(constantSet, modifier = modifier.fillMaxWidth()
         .padding(start = 8.dp, end = 8.dp, bottom = 16.dp, top = 8.dp)) {
         AsyncImage(model = videoItem.imageUrl, contentDescription = null,
             contentScale = ContentScale.Crop,

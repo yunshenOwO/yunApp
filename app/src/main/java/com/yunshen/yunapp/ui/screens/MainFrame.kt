@@ -17,12 +17,11 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.yunshen.yunapp.model.entity.NavigationItem
 
 
 @Composable
-fun MainFrame(onNavigateToArticle: () -> Unit = {}) {
+fun MainFrame(onNavigateToArticle: () -> Unit = {}, onNavigateToVideo: () -> Unit) {
     var currentNavigationIndex by remember {
         mutableIntStateOf(0)
     }
@@ -49,19 +48,10 @@ fun MainFrame(onNavigateToArticle: () -> Unit = {}) {
     ) { //这个box是防止遮住
         Box(modifier = Modifier.padding(it)){
             when(currentNavigationIndex){
-                0 -> IndexScreen(onNavigateToArticle = onNavigateToArticle)
+                0 -> IndexScreen(onNavigateToArticle = onNavigateToArticle, onNavigateToVideo = onNavigateToVideo)
                 1 -> DetailScreen()
                 2 -> TaskScreen()
             }
         }
     }
-}
-
-
-@Preview(
-    showSystemUi = true
-)
-@Composable
-fun MainFramePreview(){
-    MainFrame()
 }

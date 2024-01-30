@@ -1,20 +1,16 @@
 package com.yunshen.yunapp.ui.screens
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LeadingIconTab
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -28,11 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yunshen.yunapp.ui.componment.ArticleItem
-import com.yunshen.yunapp.ui.componment.Notification
-import com.yunshen.yunapp.ui.componment.SwiperContent
+import com.yunshen.yunapp.ui.componment.MiddleItem
 import com.yunshen.yunapp.ui.componment.TopAppBar
-import com.yunshen.yunapp.ui.componment.VideoItem
 import com.yunshen.yunapp.viewmodel.ArticleViewModel
 import com.yunshen.yunapp.viewmodel.MainViewModel
 import com.yunshen.yunapp.viewmodel.VideoModel
@@ -42,6 +35,7 @@ import com.yunshen.yunapp.viewmodel.VideoModel
 fun IndexScreen(vm:MainViewModel = viewModel(),
                 articleViewModel: ArticleViewModel = viewModel(),
                 onNavigateToArticle: () -> Unit = {},
+                onNavigateToVideo: () -> Unit = {},
                 videoModel: VideoModel = viewModel()) {
     Column(
         modifier = Modifier
@@ -79,52 +73,23 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
             containerColor = Color(0xFF4A5E8F)
         ) {
             vm.category.forEachIndexed { index, category ->
-                Tab(selected = vm.categoryindex == index, onClick = {
+                Tab(selected = vm.categoryindex == index,
+                    onClick = {
                     vm.updateCatgoryIndex(index)
                 }) {
                     Text(text = category.title, modifier = Modifier.padding(vertical = 8.dp))
                 }
             }
         }
-
-        TabRow(selectedTabIndex = vm.currentypeIndex,
-            indicator = {},//取消分割线，和下划线
-            divider = {}) {
-            vm.types.forEachIndexed { index, item ->
-                LeadingIconTab(selected = vm.currentypeIndex == index,
-                    onClick = {
-                    vm.updateTypeIndex(index)
-                }, icon = {
-                    Icon(imageVector = item.icon, contentDescription = null)
-                    }, text = {
-                        Text(text = item.title,
-                            modifier = Modifier.padding(vertical = 8.dp),
-                            fontSize = 16.sp)
-                    })
+        when(vm.categoryindex){
+            0 -> {
+                MiddleItem(vm, articleViewModel, videoModel, onNavigateToArticle, onNavigateToVideo)
             }
-        }
-
-        LazyColumn {
-            //轮播图
-            item { SwiperContent(vm) }
-            //通知
-            item { Notification(vm) }
-
-            //文章页面
-            if (vm.currentypeIndex == 0){
-                items(articleViewModel.articleList){
-                        article ->
-                    ArticleItem(articleEntity = article, Modifier.clickable {
-                        onNavigateToArticle()
-                    })
-                }
-            }else{
-
-                //视频页面
-                items(videoModel.list){
-                        videoItem ->
-                    VideoItem(videoItem = videoItem)
-                }
+            1 -> {
+                Text(text = "bilbil")
+            }
+            2 -> {
+                Text(text = "QQ")
             }
         }
     }

@@ -7,4 +7,6 @@ sealed class Destination(val route:String) {
     //文章详情页
 
     data object ArticleDetail:Destination("ArticleDetail")
+
+    data object VideoDetail:Destination("VideoDetail")
 }
