@@ -1,5 +1,7 @@
 package com.yunshen.yunapp.ui.screens
 
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,12 +21,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yunshen.yunapp.ui.componment.MiddleItem
+import com.yunshen.yunapp.ui.componment.BilBilItem
+import com.yunshen.yunapp.ui.componment.NewsItem
+import com.yunshen.yunapp.ui.componment.QQItem
 import com.yunshen.yunapp.ui.componment.TopAppBar
 import com.yunshen.yunapp.viewmodel.ArticleViewModel
 import com.yunshen.yunapp.viewmodel.MainViewModel
@@ -46,13 +49,15 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
             Surface(modifier = Modifier
                 .clip(RoundedCornerShape(16.dp))
                 .weight(1f), color = Color(0x33FFFFFF)) {
-                Row (modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                Row (modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 4.dp)
+                    .clickable { Log.i("search", "IndexScreen: 点击了搜索") },
                     horizontalArrangement = Arrangement.Center){
                     Icon(imageVector = Icons.Filled.Search,
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.size(14.dp))
-                    Text(text = "搜索", color = Color.White, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(text = "搜索", color = Color.White, fontSize = 12.sp)
                 }
             }
             Spacer(modifier = Modifier.weight(0.08f))
@@ -83,13 +88,13 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
         }
         when(vm.categoryindex){
             0 -> {
-                MiddleItem(vm, articleViewModel, videoModel, onNavigateToArticle, onNavigateToVideo)
+                NewsItem(vm, articleViewModel, videoModel, onNavigateToArticle, onNavigateToVideo)
             }
             1 -> {
-                Text(text = "bilbil")
+                BilBilItem(videoModel = videoModel)
             }
             2 -> {
-                Text(text = "QQ")
+                QQItem()
             }
         }
     }

@@ -18,7 +18,7 @@ import com.yunshen.yunapp.viewmodel.VideoModel
 
 
 @Composable
-fun MiddleItem(vm:MainViewModel,
+fun NewsItem(vm:MainViewModel,
                articleViewModel: ArticleViewModel,
                videoModel: VideoModel,
                onNavigateToArticle: () -> Unit,

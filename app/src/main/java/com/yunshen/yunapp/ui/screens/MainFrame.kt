@@ -2,6 +2,7 @@ package com.yunshen.yunapp.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Build
@@ -17,6 +18,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.unit.dp
 import com.yunshen.yunapp.model.entity.NavigationItem
 
 
@@ -32,7 +35,7 @@ fun MainFrame(onNavigateToArticle: () -> Unit = {}, onNavigateToVideo: () -> Uni
     )
     Scaffold(
         bottomBar = {
-            NavigationBar {
+            NavigationBar(modifier = Modifier.clip(RoundedCornerShape(12.dp))) {
                 items.forEachIndexed { index, navigationItem ->
                     NavigationBarItem(selected = currentNavigationIndex == index,
                         onClick = {

@@ -35,12 +35,12 @@ import com.yunshen.yunapp.ui.componment.TopAppBar
 
 @Composable
 fun TaskScreen() {
-    val menu = listOf(MenuItem(R.drawable.ysbzc, "学习积分"),
-        MenuItem(R.drawable.ysbzc, "浏览记录"),
-        MenuItem(R.drawable.ysbzc, "常见问题"),
-        MenuItem(R.drawable.ysbzc, "版本信息"),
-        MenuItem(R.drawable.ysbzc, "个人设置"),
-        MenuItem(R.drawable.ysbzc, "联系我们")
+    val menu = listOf(MenuItem(R.drawable.intergration, "学习积分"),
+        MenuItem(R.drawable.browse, "浏览记录"),
+        MenuItem(R.drawable.questtion, "常见问题"),
+        MenuItem(R.drawable.version, "版本信息"),
+        MenuItem(R.drawable.setting, "个人设置"),
+        MenuItem(R.drawable.callme, "联系我们")
         )
     Column (modifier = Modifier){
         TopAppBar {
