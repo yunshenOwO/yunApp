@@ -21,7 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -39,6 +38,7 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
                 articleViewModel: ArticleViewModel = viewModel(),
                 onNavigateToArticle: () -> Unit = {},
                 onNavigateToVideo: () -> Unit = {},
+                goToVideo:() -> Unit,
                 videoModel: VideoModel = viewModel()) {
     Column(
         modifier = Modifier
@@ -91,19 +91,11 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
                 NewsItem(vm, articleViewModel, videoModel, onNavigateToArticle, onNavigateToVideo)
             }
             1 -> {
-                BilBilItem(videoModel = videoModel)
+                BilBilItem(videoModel = videoModel, goToVideo = goToVideo)
             }
             2 -> {
                 QQItem()
             }
         }
     }
-}
-
-@Preview(
-    showSystemUi = true
-)
-@Composable
-fun IndexPreview(){
-    IndexScreen()
 }

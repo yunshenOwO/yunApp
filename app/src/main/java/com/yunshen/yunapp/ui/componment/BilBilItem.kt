@@ -1,5 +1,6 @@
 package com.yunshen.yunapp.ui.componment
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,7 +25,7 @@ import com.yunshen.yunapp.model.entity.VideoEntity
 import com.yunshen.yunapp.viewmodel.VideoModel
 
 @Composable
-fun BilBilItem(videoModel: VideoModel){
+fun BilBilItem(goToVideo: () -> Unit,videoModel: VideoModel){
     LazyColumn {
         items(videoModel.list){
                 item: VideoEntity ->
@@ -34,7 +35,7 @@ fun BilBilItem(videoModel: VideoModel){
                     modifier = Modifier
                         .aspectRatio(7 / 3f)
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(8.dp)),
+                        .clip(RoundedCornerShape(8.dp)).clickable { goToVideo() },
                     contentScale = ContentScale.Crop)
                 Row(horizontalArrangement = Arrangement.SpaceAround){
                     Card(modifier = Modifier

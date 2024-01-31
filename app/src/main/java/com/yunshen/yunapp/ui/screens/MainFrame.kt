@@ -24,7 +24,9 @@ import com.yunshen.yunapp.model.entity.NavigationItem
 
 
 @Composable
-fun MainFrame(onNavigateToArticle: () -> Unit = {}, onNavigateToVideo: () -> Unit) {
+fun MainFrame(onNavigateToArticle: () -> Unit = {},
+              onNavigateToVideo: () -> Unit,
+              goToVideo:() -> Unit) {
     var currentNavigationIndex by remember {
         mutableIntStateOf(0)
     }
@@ -51,7 +53,7 @@ fun MainFrame(onNavigateToArticle: () -> Unit = {}, onNavigateToVideo: () -> Uni
     ) { //这个box是防止遮住
         Box(modifier = Modifier.padding(it)){
             when(currentNavigationIndex){
-                0 -> IndexScreen(onNavigateToArticle = onNavigateToArticle, onNavigateToVideo = onNavigateToVideo)
+                0 -> IndexScreen(onNavigateToArticle = onNavigateToArticle, onNavigateToVideo = onNavigateToVideo, goToVideo = goToVideo)
                 1 -> DetailScreen()
                 2 -> TaskScreen()
             }
