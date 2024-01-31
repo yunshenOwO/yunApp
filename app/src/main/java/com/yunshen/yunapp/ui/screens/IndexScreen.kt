@@ -38,6 +38,7 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
                 articleViewModel: ArticleViewModel = viewModel(),
                 onNavigateToArticle: () -> Unit = {},
                 onNavigateToVideo: () -> Unit = {},
+                onNavigateToStudy: () -> Unit,
                 goToVideo:() -> Unit,
                 videoModel: VideoModel = viewModel()) {
     Column(
@@ -69,7 +70,9 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
             Spacer(modifier = Modifier.weight(0.04f))
             Text(text = "26%", fontSize = 12.sp, color = Color.White)
             Spacer(modifier = Modifier.weight(0.08f))
-            Icon(imageVector = Icons.Default.Notifications, contentDescription = null, tint = Color.White)
+            Icon(imageVector = Icons.Default.Notifications, contentDescription = null, tint = Color.White, modifier = Modifier.clickable {
+                onNavigateToStudy()
+            })
             Spacer(modifier = Modifier.weight(0.08f))
         }
         //分类标签

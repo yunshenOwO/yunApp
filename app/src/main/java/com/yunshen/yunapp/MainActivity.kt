@@ -20,7 +20,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     NavHostApp()
+//                    LogInScreen()
                 }
+
             }
         }
     }

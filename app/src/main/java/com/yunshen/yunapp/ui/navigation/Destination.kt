@@ -11,4 +11,6 @@ sealed class Destination(val route:String) {
     data object VideoDetail:Destination("VideoDetail")
 
     data object BilBilVideo:Destination("BilBilVideo")
+
+    data object LOGIN:Destination("LOGIN")
 }

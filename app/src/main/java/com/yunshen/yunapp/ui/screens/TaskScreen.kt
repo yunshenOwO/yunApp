@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yunshen.yunapp.R
+import com.yunshen.yunapp.model.compositionloacl.localUserLogin
 import com.yunshen.yunapp.ui.componment.TopAppBar
 
 
@@ -59,7 +60,10 @@ fun TaskScreen() {
                     Column (verticalArrangement = Arrangement.SpaceAround, modifier = Modifier
                         .padding(horizontal = 8.dp)
                         .height(62.dp)){
-                        Text(text = "未登录", color = Color(0xff333333), fontSize = 18.sp)
+                        (if (localUserLogin.current.login) localUserLogin.current.userInfo?.username else "未登录")?.let {
+                            Text(text = it, color = Color(0xff333333),
+                                fontSize = 18.sp)
+                        }
                         Text(text = "已坚持学习0天", color = Color(0xff333333), fontSize = 12.sp)
                     }
                 }
