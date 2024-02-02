@@ -3,7 +3,7 @@ package com.yunshen.yunapp.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yunshen.yunapp.model.UserInfoManager
+import com.yunshen.yunapp.model.service.UserInfoManager
 import com.yunshen.yunapp.model.entity.UserInfoEntity
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
@@ -38,5 +38,11 @@ class UserViewModel(content:Context):ViewModel(){
         }
         onBack()
 
+    }
+
+    fun clear(){
+        viewModelScope.launch {
+            userInfoManager.logout() //退出登录
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.yunshen.yunapp.model
+package com.yunshen.yunapp.model.service
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -24,6 +24,13 @@ class UserInfoManager(private val content:Context) {
         content.userStore.edit {
             it[LOGIN] = userName.isNotEmpty()
             it[USERNAME] = userName
+        }
+    }
+
+    suspend fun logout(){
+        content.userStore.edit {
+            it[LOGIN] = false
+            it[USERNAME] = ""
         }
     }
 }

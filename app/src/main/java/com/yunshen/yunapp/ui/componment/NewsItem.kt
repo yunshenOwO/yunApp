@@ -19,10 +19,10 @@ import com.yunshen.yunapp.viewmodel.VideoModel
 
 @Composable
 fun NewsItem(vm:MainViewModel,
-               articleViewModel: ArticleViewModel,
-               videoModel: VideoModel,
-               onNavigateToArticle: () -> Unit,
-               onNavigateToVideo: () -> Unit){
+                articleViewModel: ArticleViewModel,
+                videoModel: VideoModel,
+                onNavigateToArticle: () -> Unit,
+                onNavigateToVideo: () -> Unit){
     TabRow(selectedTabIndex = vm.currentypeIndex,
         indicator = {},//取消分割线，和下划线
         divider = {}) {

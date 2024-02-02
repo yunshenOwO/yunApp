@@ -18,12 +18,14 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.accompanist.placeholder.placeholder
 import com.yunshen.yunapp.ui.componment.BilBilItem
 import com.yunshen.yunapp.ui.componment.NewsItem
 import com.yunshen.yunapp.ui.componment.QQItem
@@ -41,6 +43,9 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
                 onNavigateToStudy: () -> Unit,
                 goToVideo:() -> Unit,
                 videoModel: VideoModel = viewModel()) {
+    LaunchedEffect(Unit){
+        vm.categoryData()
+    }
     Column(
         modifier = Modifier
     ) {
@@ -85,7 +90,9 @@ fun IndexScreen(vm:MainViewModel = viewModel(),
                     onClick = {
                     vm.updateCatgoryIndex(index)
                 }) {
-                    Text(text = category.title, modifier = Modifier.padding(vertical = 8.dp))
+                    Text(text = category.title,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                            .placeholder(visible = !vm.categoryLoad, color = Color.LightGray))
                 }
             }
         }

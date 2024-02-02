@@ -11,15 +11,33 @@ import androidx.lifecycle.ViewModel
 import com.yunshen.yunapp.model.entity.Category
 import com.yunshen.yunapp.model.entity.DataType
 import com.yunshen.yunapp.model.entity.SwiperEntity
+import com.yunshen.yunapp.model.service.HomeService
 
 class MainViewModel:ViewModel() {
-    val category by mutableStateOf(
+    private val homeService = HomeService.instance()
+
+    var categoryLoad by mutableStateOf(false)
+        private set
+
+    var category by mutableStateOf(
         listOf(
-            Category("思想启蒙"),
-            Category("billbil"),
-            Category("QQ")
+            Category("思想启蒙", "1"),
+            Category("billbil", "2"),
+            Category("QQ", "3")
         )
     )
+        private set
+    suspend fun categoryData(){
+        val categoryResponse = homeService.category()
+        if (categoryResponse.code == 0){
+            category = categoryResponse.data
+            categoryLoad = true
+        }else{
+            val message = categoryResponse.message
+        }
+
+
+    }
     /**
      * 当前分类下标
      */
