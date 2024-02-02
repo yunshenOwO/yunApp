@@ -41,12 +41,12 @@ class TaskViewModel : ViewModel(){
         private set
 
     fun updateTips(){
-       tips = when(todayPoint){
-           0 -> "今日获得0积分，快去完成以下任务"
-           in 1..14 ->{
-               "今日获得 $todayPoint 积分，再接再厉"
-           }
-           else -> "太棒了!!都完成了"
-       }
+        tips = when(todayPoint){
+            0 -> "今日获得0积分，快去完成以下任务"
+            in 1..14 ->{
+                "今日获得 $todayPoint 积分，再接再厉"
+            }
+            else -> "太棒了!!都完成了"
+        }
     }
 }
