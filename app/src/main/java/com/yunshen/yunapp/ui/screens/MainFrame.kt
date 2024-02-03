@@ -25,9 +25,9 @@ import com.yunshen.yunapp.model.entity.NavigationItem
 
 @Composable
 fun MainFrame(onNavigateToArticle: () -> Unit = {},
-              onNavigateToVideo: () -> Unit,
-              onNavigateToStudy: () -> Unit,
-              goToVideo:() -> Unit) {
+                onNavigateToVideo: () -> Unit,
+                onNavigateToStudy: () -> Unit,
+                goToVideo:() -> Unit) {
     var currentNavigationIndex by remember {
         mutableIntStateOf(0)
     }
